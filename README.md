@@ -31,4 +31,4 @@ Exclus :
 - [Issue 01 - Initialiser la CLI php velt](issues/01-initialiser-cli-php-velt.md)
 - [Issue 02 - Creer make feature](issues/02-creer-make-feature.md)
 - [Issue 03 - Creer serve et make test](issues/03-creer-serve-make-test.md)
-
+- [Issue 04 - Preparer distribution Composer de la CLI](issues/04-preparer-distribution-composer-cli.md)
