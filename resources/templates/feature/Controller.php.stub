@@ -1,0 +1,13 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {NAMESPACE};
+
+final class {CLASS_NAME}Controller
+{
+    public function index(): mixed
+    {
+        return require __DIR__ . '/views/login.velt.php';
+    }
+}

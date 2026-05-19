@@ -1,0 +1,10 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {NAMESPACE};
+
+final class {CLASS_NAME}
+{
+    protected string $table = '';
+}

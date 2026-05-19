@@ -1,0 +1,15 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {NAMESPACE}\Tests;
+
+use PHPUnit\Framework\TestCase;
+
+final class {CLASS_NAME}ControllerTest extends TestCase
+{
+    public function testIndexCanBeRendered(): void
+    {
+        $this->assertTrue(true);
+    }
+}

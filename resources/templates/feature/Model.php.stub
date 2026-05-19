@@ -1,0 +1,10 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {NAMESPACE};
+
+final class {CLASS_NAME}Model
+{
+    protected string $table = '{FEATURE_NAME}';
+}
