@@ -19,6 +19,7 @@ final class CliTest extends TestCase
 
         self::assertSame(0, $exitCode);
         self::assertStringContainsString('Velt CLI', $output->buffer());
+        self::assertStringContainsString('kernel:check', $output->buffer());
         self::assertStringContainsString('make:feature', $output->buffer());
         self::assertStringContainsString('serve', $output->buffer());
     }
@@ -43,6 +44,20 @@ final class CliTest extends TestCase
 
         self::assertSame(1, $exitCode);
         self::assertStringContainsString('Unknown command "missing"', $output->buffer());
+    }
+
+    public function testKernelCheckValidatesKernelContracts(): void
+    {
+        $path = $this->temporaryDirectory();
+        $output = new Output();
+        ob_start();
+        $exitCode = ApplicationFactory::create()->run(['velt', 'kernel:check', '--path=' . $path], $output);
+        ob_end_clean();
+
+        self::assertSame(0, $exitCode);
+        self::assertStringContainsString('Kernel contracts responded successfully.', $output->buffer());
+        self::assertStringContainsString('Base path: ' . $path, $output->buffer());
+        self::assertStringContainsString('Environment: production', $output->buffer());
     }
 
     public function testMakeFeatureGeneratesExpectedFiles(): void

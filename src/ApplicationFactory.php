@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Velt\Cli;
 
 use Velt\Cli\Command\HelpCommand;
+use Velt\Cli\Command\KernelCheckCommand;
 use Velt\Cli\Command\ListCommand;
 use Velt\Cli\Command\MakeControllerCommand;
 use Velt\Cli\Command\MakeFeatureCommand;
@@ -25,6 +26,7 @@ final class ApplicationFactory
         $application = new Application('Velt CLI', '0.1.0');
         $application->register(new ListCommand($application));
         $application->register(new HelpCommand($application));
+        $application->register(new KernelCheckCommand());
         $application->register(new MakeFeatureCommand($filesystem, $renderer));
         $application->register(new MakeControllerCommand($filesystem, $renderer));
         $application->register(new MakeModelCommand($filesystem, $renderer));

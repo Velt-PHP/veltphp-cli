@@ -4,8 +4,98 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "067f63f123d90d1b3b6d1c9bcccf2f4b",
-    "packages": [],
+    "content-hash": "c797afdcd87bf61d762786f9be233c2b",
+    "packages": [
+        {
+            "name": "velt/kernel",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "../veltphp-kernel/packages/kernel",
+                "reference": "99c136fd10586892418ae43c7cb95b496eb2a959"
+            },
+            "require": {
+                "php": "^8.2",
+                "velt/ui": "dev-main"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^11.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Velt\\Kernel\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Velt\\Kernel\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "phpunit"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Core kernel contracts and foundation for the Velt framework.",
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
+            "name": "velt/ui",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "../velt-ui",
+                "reference": "69164c7e9fcc778ea5c93ca4ae033190671814f5"
+            },
+            "require": {
+                "php": "^8.2"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "dev-master",
+                "phpstan/phpstan": "2.2.x-dev",
+                "phpunit/phpunit": "11.5.x-dev",
+                "symfony/var-dumper": "7.4.x-dev"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Velt\\Ui\\": "src/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "phpunit"
+                ],
+                "analyse": [
+                    "phpstan analyse"
+                ],
+                "fix": [
+                    "php-cs-fixer fix"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jules MUKADI",
+                    "email": "julesmukadi.dev@gmail.com"
+                }
+            ],
+            "description": "Declarative UI components and renderers for the Velt framework.",
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        }
+    ],
     "packages-dev": [
         {
             "name": "myclabs/deep-copy",
@@ -1790,8 +1880,10 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": {},
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "velt/kernel": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
