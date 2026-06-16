@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace {NAMESPACE};
 
-final class {CLASS_NAME}Model
+use Velt\Database\Model;
+
+final class {CLASS_NAME}Model extends Model
 {
     protected string $table = '{FEATURE_NAME}';
 }

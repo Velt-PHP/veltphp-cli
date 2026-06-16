@@ -5,10 +5,11 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "velt/database": "dev-main",
         "velt/kernel": "dev-main"
     },
     "require-dev": {
-        "phpunit/phpunit": "^11.0"
+        "phpunit/phpunit": "^11.5"
     },
     "autoload": {
         "psr-4": {
@@ -24,6 +25,13 @@
         "bin/velt"
     ],
     "repositories": [
+        {
+            "type": "path",
+            "url": "../velt-database",
+            "options": {
+                "symlink": true
+            }
+        },
         {
             "type": "path",
             "url": "../veltphp-kernel/packages/kernel",

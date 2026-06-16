@@ -6,8 +6,8 @@ namespace {NAMESPACE};
 
 final class {CLASS_NAME}Controller
 {
-    public function index(): mixed
+    public function index(): string
     {
-        return require __DIR__ . '/views/login.velt.php';
+        return (new {CLASS_NAME}Page())->show();
     }
 }

@@ -5,11 +5,12 @@ declare(strict_types=1);
 namespace {NAMESPACE}\Tests;
 
 use PHPUnit\Framework\TestCase;
+use {NAMESPACE}\{CLASS_NAME}Page;
 
 final class {CLASS_NAME}ControllerTest extends TestCase
 {
-    public function testIndexCanBeRendered(): void
+    public function testPageCanBeBuilt(): void
     {
-        $this->assertTrue(true);
+        $this->assertSame('{CLASS_NAME}Page', (new \ReflectionClass(new {CLASS_NAME}Page()))->getShortName());
     }
 }

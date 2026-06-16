@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace {NAMESPACE};
 
-final class {CLASS_NAME}Service
+final class {CLASS_NAME}
 {
     /**
      * @return array<string, mixed>

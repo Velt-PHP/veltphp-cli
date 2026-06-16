@@ -35,11 +35,11 @@ final class MakeFeatureCommand implements Command
 Usage: php bin/velt make:feature <name> [--force] [--path=/project] [--no-interaction]
 
 Generates:
-  features/<name>/<ClassName>Controller.php
-  features/<name>/<ClassName>Service.php
-  features/<name>/<ClassName>Model.php
-  features/<name>/views/login.velt.php
-  features/<name>/tests/<ClassName>ControllerTest.php
+  features/<ClassName>/<ClassName>Page.php
+  features/<ClassName>/<ClassName>Controller.php
+  features/<ClassName>/<ClassName>Service.php
+  features/<ClassName>/<ClassName>Model.php
+  features/<ClassName>/Tests/<ClassName>ControllerTest.php
 HELP;
     }
 
@@ -53,8 +53,9 @@ HELP;
             return 1;
         }
 
-        $featureName = Naming::kebab($feature);
         $className = Naming::pascal($feature);
+        $featureName = $className;
+        $tableName = str_replace('-', '_', Naming::kebab($feature));
         $basePath = $input->pathOption();
         $featurePath = $basePath . DIRECTORY_SEPARATOR . 'features' . DIRECTORY_SEPARATOR . $featureName;
         $force = $input->boolOption('force');
@@ -66,17 +67,17 @@ HELP;
         }
 
         $variables = [
-            'FEATURE_NAME' => $featureName,
+            'FEATURE_NAME' => $tableName,
             'CLASS_NAME' => $className,
-            'NAMESPACE' => 'App\\Features\\' . $className,
+            'NAMESPACE' => 'App\\' . $className,
         ];
 
         $files = [
+            $featurePath . DIRECTORY_SEPARATOR . $className . 'Page.php' => 'feature/Page.php.stub',
             $featurePath . DIRECTORY_SEPARATOR . $className . 'Controller.php' => 'feature/Controller.php.stub',
             $featurePath . DIRECTORY_SEPARATOR . $className . 'Service.php' => 'feature/Service.php.stub',
             $featurePath . DIRECTORY_SEPARATOR . $className . 'Model.php' => 'feature/Model.php.stub',
-            $featurePath . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . 'login.velt.php' => 'feature/login.velt.php.stub',
-            $featurePath . DIRECTORY_SEPARATOR . 'tests' . DIRECTORY_SEPARATOR . $className . 'ControllerTest.php' => 'feature/ControllerTest.php.stub',
+            $featurePath . DIRECTORY_SEPARATOR . 'Tests' . DIRECTORY_SEPARATOR . $className . 'ControllerTest.php' => 'feature/ControllerTest.php.stub',
         ];
 
         foreach ($files as $target => $template) {

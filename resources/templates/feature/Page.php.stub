@@ -1,0 +1,34 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {NAMESPACE};
+
+use Velt\Ui\Components\Button;
+use Velt\Ui\Components\Card;
+use Velt\Ui\Components\Text;
+use Velt\Ui\Page;
+use Velt\Ui\Renderers\WebRenderer;
+
+final class {CLASS_NAME}Page
+{
+    public function show(): string
+    {
+        return (new WebRenderer())->render($this->page());
+    }
+
+    public function page(): Page
+    {
+        return Page::make('{CLASS_NAME}')
+            ->meta([
+                'title' => '{CLASS_NAME}',
+                'description' => '{CLASS_NAME} feature page.',
+            ])
+            ->add(
+                Card::make()
+                    ->add(Text::make('{CLASS_NAME}')->as('h1'))
+                    ->add(Text::make('Build this feature from here.'))
+                    ->add(Button::make('Continue')->variant('primary'))
+            );
+    }
+}
