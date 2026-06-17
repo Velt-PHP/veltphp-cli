@@ -1,5 +1,5 @@
 {
-    "name": "veltphp/cli",
+    "name": "velt/cli",
     "description": "Official CLI and code generators for the Velt framework.",
     "type": "library",
     "license": "MIT",
