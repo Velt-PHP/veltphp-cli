@@ -1,6 +1,20 @@
 #!/usr/bin/env php
 <?php
 
+/**
+ * Point d'entrée principal de la CLI Velt
+ * 
+ * Ce fichier est exécuté quand l'utilisateur tape une commande comme:
+ *   php bin/velt list
+ *   php bin/velt make:controller User
+ * 
+ * Flux:
+ *   1. Charge l'autoload de Composer (ou crée un fallback)
+ *   2. Récupère les arguments du terminal via $_SERVER['argv']
+ *   3. Crée l'application CLI via ApplicationFactory
+ *   4. Lance la bonne commande
+ */
+
 declare(strict_types=1);
 
 $autoload = __DIR__ . '/../vendor/autoload.php';

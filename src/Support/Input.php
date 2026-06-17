@@ -4,6 +4,19 @@ declare(strict_types=1);
 
 namespace Velt\Cli\Support;
 
+/**
+ * Parseur d'arguments du terminal
+ * 
+ * Transforme les arguments bruts en données faciles à utiliser.
+ * 
+ * Exemple d'entrée:
+ *   ['bin/velt', 'make:controller', 'User', '--path=/mon-projet', '--force']
+ * 
+ * Devient:
+ *   command = 'make:controller'
+ *   arguments = ['User']
+ *   options = ['path' => '/mon-projet', 'force' => true]
+ */
 final class Input
 {
     /**
@@ -17,19 +30,30 @@ final class Input
     ) {
     }
 
+    /**
+     * Parse les arguments du terminal ($_SERVER['argv'])
+     * 
+     * Exemple:
+     *   fromArgv(['bin/velt', 'make:controller', 'User', '--force'])
+     */
     public static function fromArgv(array $argv): self
     {
+        // Retire le premier élément (bin/velt) et récupère le reste
         $tokens = array_values(array_slice($argv, 1));
         $command = null;
         $arguments = [];
         $options = [];
 
+        // Traite chaque paramètre
         foreach ($tokens as $token) {
             if (!is_string($token)) {
                 continue;
             }
 
+            // Vérifie si c'est une option (commence par --)
             if (str_starts_with($token, '--')) {
+                // Enlève les -- et sépare nom et valeur
+                // Exemple: --path=/mon-projet devient ['path', '/mon-projet']
                 $option = substr($token, 2);
                 [$name, $value] = array_pad(explode('=', $option, 2), 2, true);
                 $options[$name] = $value;
@@ -37,12 +61,13 @@ final class Input
                 continue;
             }
 
+            // Le premier token non-option est la commande
             if ($command === null) {
                 $command = $token;
-
                 continue;
             }
 
+            // Le reste sont des arguments
             $arguments[] = $token;
         }
 
