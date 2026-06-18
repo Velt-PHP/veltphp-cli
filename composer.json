@@ -5,8 +5,8 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "velt/database": "dev-main",
-        "velt/kernel": "dev-main"
+        "velt/database": "^0.1.0",
+        "velt/kernel": "^0.1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^11.5"
@@ -23,29 +23,6 @@
     },
     "bin": [
         "bin/velt"
-    ],
-    "repositories": [
-        {
-            "type": "path",
-            "url": "../velt-database",
-            "options": {
-                "symlink": true
-            }
-        },
-        {
-            "type": "path",
-            "url": "../veltphp-kernel/packages/kernel",
-            "options": {
-                "symlink": true
-            }
-        },
-        {
-            "type": "path",
-            "url": "../velt-ui",
-            "options": {
-                "symlink": true
-            }
-        }
     ],
     "scripts": {
         "test": "phpunit"
